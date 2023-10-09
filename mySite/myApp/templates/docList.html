@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Table 06</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+	
+	<link rel="stylesheet" href={% static "css/style.css" %}>
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="h5 mb-4 text-center">Doctor's List</h3>
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-primary bg-blue">
+						    <tr>
+						    	<th>&nbsp;</th>
+						    	<th>Name</th>
+						    	<th>Speciality</th>
+						      <th></th>
+						      <th>ID</th>
+							  <th>Avail</th>
+						      <th>&nbsp;</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+
+							{% for n in data %}
+
+						    <tr class="alert" role="alert">
+						    	
+						    	<td>
+						    		<div>
+										<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="60">
+									</div>
+						    	</td>
+						      <td>
+						      	<div class="email">
+						      		<span>{{n.first_name}} {{n.last_name}} </span>
+						      		<span>About</span>
+						      	</div>
+						      </td>
+						      <td>{{n.speciality}}</td>
+						      <td class="quantity">
+								<td>{{n.phone}}</td>
+					        	<div class="input-group">
+									<td>yes</td>
+									<td>
+										<a href="">See more</a>
+									</td>
+				             	
+				          	</div>
+						      	
+				        	</td>
+						    </tr>
+
+							{% endfor %}
+						    
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
+</html>
+

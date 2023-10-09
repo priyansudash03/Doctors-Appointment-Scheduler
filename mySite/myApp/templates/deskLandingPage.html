@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        .right::-webkit-scrollbar {
+            width: 0.1em;
+        }
+
+        .right::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        .upper::-webkit-scrollbar {
+            width: 0.1em;
+        }
+
+        .upper::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+
+        .lower::-webkit-scrollbar {
+            width: 0.1em;
+        }
+
+        .lower::-webkit-scrollbar-thumb {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav px-6 py-2 z-50 flex justify-between items-center fixed bg-white flex-row w-full">
+        <div class="left w-1/2 flex flex-row items-center gap-8">
+            <div class="logo flex flex-row gap-4 ">
+                <div class="icon text-5xl text-[#4F7EFC]">
+                    <i class="las la-caret-up"></i>
+                </div>
+                <h1 class="text-3xl font-bold ">AllotMeNow.com</h1>
+            </div>
+            <div class="search w-1/2 py-1 px-3 flex flex-row gap-2 border-b-2 border-b-[#B0B2C4]">
+                <div class="icon text-2xl"><i class="las la-search"></i></div>
+                <input class="border-none active:border-none focus:outline-none w-full group "
+                    placeholder="Enter your Appointment Id:- " type="text">
+            </div>
+        </div>
+        <div class="right flex gap-3 flex-row items-center">
+            <div class="bell text-2xl bg-[#e9e9ea] text-black p-2 rounded-full ">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em"
+                    width="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8 16a2 2 0 002-2H6a2 2 0 002 2zm.995-14.901a1 1 0 10-1.99 0A5.002 5.002 0 003 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z">
+                    </path>
+                </svg>
+            </div>
+            <div class="user flex flex-row gap-2 items-center">
+                <img class="h-14 w-14" src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
+                    alt="">
+                <div class="userid">
+                    <h1 class="text-xl font-semibold capitalize">Manager Ashmin</h1>
+                    <h3 class="text-sm font-medium text-[#B0B2C4]">Admin</h3>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="sidebar z-40 bg-white min-h-screen fixed w-60 pt-24 px-6 ">
+        <ul>
+            <li class="capitalize text-xl font-semibold mb-5 hover:text-2xl hover:bg-[#1F9EFD] hover:text-white px-4 py-2 rounded-2xl"><i class="mr-3 las la-clipboard-check text-2xl"></i>Dashboard</li>
+            <li class="capitalize text-xl font-semibold mb-5 hover:text-2xl hover:bg-[#1F9EFD] hover:text-white px-4 py-2 rounded-2xl"><i class="mr-3 las la-stethoscope text-2xl"></i>doctors</li>
+            <li class="capitalize text-xl font-semibold mb-5 hover:text-2xl hover:bg-[#1F9EFD] hover:text-white px-4 py-2 rounded-2xl"><i class="mr-3 las la-user-injured text-2xl"></i>patients</li>
+            <li class="capitalize text-xl font-semibold mb-5 hover:text-2xl hover:bg-[#1F9EFD] hover:text-white px-4 py-2 rounded-2xl"><i class="mr-3 las la-cog text-2xl"></i>settings</li>
+            <li class="capitalize text-xl font-semibold mb-5 hover:text-2xl hover:bg-[#1F9EFD] hover:text-white px-4 py-2 rounded-2xl"><i class="mr-3 las la-sign-out-alt text-2xl"></i>log out</li>
+        </ul>
+    </div>
+    <div class="main relative w-[calc(100%-240px)] left-60 bg-[#ececec]">
+        <div class="page1 p-6 pt-24 min-h-screen relative ">
+            <div class="part1 flex flex-row justify-between">
+                <h1 class="capitalize font-bold text-3xl">Dashboard</h1>
+                <div class="booking flex flex-row gap-3 ">
+                    <button
+                        class="patient-booking capitalize text-white text-lg font-semibold text-center rounded-lg w-44 bg-[#FDA621] py-2 px-3">
+                        <i class="las la-plus"></i> add patient
+                    </button>
+                    <button
+                        class="new-doctor capitalize text-white text-lg font-semibold py-2 px-3 rounded-lg w-44 bg-[#1F9EFD]">
+                        <i class="las la-plus"></i> add doctor
+                    </button>
+                </div>
+            </div>
+            <div class="part2 grid pt-6 grid-cols-4 gap-3">
+                <div class="box bg-white h-40 py-6 px-10 flex flex-col justify-around items-start rounded-2xl">
+                    <div class="upper flex flex-row items-center">
+                        <div class="icon mr-3">
+                            <i class="las la-stethoscope text-5xl p-2  bg-[#E3F0FB] text-[#169AFB] rounded-full"></i>
+                        </div>
+                        <div class="text capitalize">
+                            <h1 class="text-black font-bold text-2xl">{{noDoc}}</h1>
+                            <h2 class="text-[#b0b0b0] font-medium text-base ">total doctors</h2>
+                        </div>
+                    </div>
+                    <div class="text2 capitalize flex flex-row gap-2">
+                        <h2 class="text-base font-medium text-[#169afb]">2 doctors</h2>
+                        <h2 class="text-[#b0b0b0] font-medium text-base ">on leave</h2>
+                    </div>
+                </div>
+                <div class="box bg-white h-40 py-6 px-10 flex flex-col justify-around items-start rounded-2xl">
+                    <div class="upper flex flex-row items-center">
+                        <div class="icon mr-3">
+                            <i class="las la-user-injured text-5xl p-2  bg-[#FFEFDC] text-[#F8A21F] rounded-full"></i>
+                        </div>
+                        <div class="text capitalize">
+                            <h1 class="text-black font-bold text-2xl">{{noPatient}}</h1>
+                            <h2 class="text-[#b0b0b0] font-medium text-base ">active patients</h2>
+                        </div>
+                    </div>
+                    <div class="text2 capitalize flex flex-row gap-2">
+                        <h2 class="text-base font-medium text-[#F8A21F]">20 patients</h2>
+                        <h2 class="text-[#b0b0b0] font-medium text-base ">admitted today</h2>
+                    </div>
+                </div>
+                <div class="box bg-white h-40 py-6 px-10 flex flex-col justify-around items-start rounded-2xl">
+                    <div class="upper flex flex-row items-center">
+                        <div class="icon mr-3">
+                            <i class="las la-calendar-check text-5xl p-2  bg-[#C8FBDF] text-[#00A73C] rounded-full"></i>
+                        </div>
+                        <div class="text capitalize">
+                            <h1 class="text-black font-bold text-2xl">50</h1>
+                            <h2 class="text-[#b0b0b0] font-medium text-base ">new appointments</h2>
+                        </div>
+                    </div>
+                    <div class="text2 capitalize flex flex-row gap-2">
+                        <h2 class="text-base font-medium text-[#00A73C]">10 appointments</h2>
+                        <h2 class="text-[#b0b0b0] font-medium text-base ">today</h2>
+                    </div>
+                </div>
+                <div class="box bg-white h-40 py-6 px-10 flex flex-col justify-around items-start rounded-2xl">
+                    <div class="upper flex flex-row items-center">
+                        <div class="icon mr-3">
+                            <i class="las la-users text-5xl p-2  bg-[#DFDBFF] text-[#893AFA] rounded-full"></i>
+                        </div>
+                        <div class="text capitalize">
+                            <h1 class="text-black font-bold text-2xl">200</h1>
+                            <h2 class="text-[#b0b0b0] font-medium text-base ">total staffs</h2>
+                        </div>
+                    </div>
+                    <div class="text2 capitalize flex flex-row gap-2">
+                        <h2 class="text-base font-medium text-[#893AFA]">30 members</h2>
+                        <h2 class="text-[#b0b0b0] font-medium text-base ">on leave</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="part3 pt-6 flex flex-row max-h-screen gap-3">
+                <div class="left w-[60%]">
+                    <div
+                        class="upper bg-white p-5 py rounded-2xl h-1/2 overflow-y-scroll hide-scrollbar overflow-x-hidden">
+                        <div class="flex flex-row justify-between items-center border-b-[1px] border-[#f0f0f0] p-4">
+                            <h3 class="text-xl font-bold uppercase">todays appointments</h3>
+                            <button class="bg-[#4F7EFC] rounded-lg py-2 px-4 font-medium text-white">See all<span
+                                    class="las la-arrow-right ml-1"></span></button>
+                        </div>
+                        <table class="w-full border-collapse text-base ">
+                            <thead class="capitalize">
+                                <tr class="border-t-[1px] border-b-[1px] border-[#f0f0f0] font-semibold">
+                                    <td class="py-2 px-2 text-[#222]">S.no</td>
+                                    <td class="py-2 px-2 text-[#222]">name</td>
+                                    <td class="py-2 px-2 text-[#222]">age</td>
+                                    <td class="py-2 px-2 text-[#222]">gender</td>
+                                    <td class="py-2 px-2 text-[#222]">date & time</td>
+                                    <td class="py-2 px-2 text-[#222]">appointed for</td>
+                                    <td class="py-2 px-2 text-[#222]">action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {% for n in patient %}
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">2</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.first_name}} {{n.patient.last_name}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.age}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.patient.gender}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.date_time}}</td>
+                                    <td class="py-2 px-2 text-[#222]">{{n.doctor.first_name}} {{n.doctor.last_name}}</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                {% endfor %}
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div
+                        class="lower bg-white p-5 h-1/2 mt-3 rounded-2xl overflow-y-scroll hide-scrollbar overflow-x-hidden">
+                        <div class="flex flex-row justify-between items-center border-b-[1px] border-[#f0f0f0] p-4">
+                            <h3 class="text-xl font-bold uppercase">active patients</h3>
+                            <button class="bg-[#4F7EFC] rounded-lg py-2 px-4 font-medium text-white">see all<span
+                                    class="las la-arrow-right ml-1"></span></button>
+                        </div>
+                        <table class="w-full border-collapse ">
+                            <thead class="capitalize">
+                                <tr class="border-t-[1px] border-b-[1px] border-[#f0f0f0] font-semibold">
+                                    <td class="py-2 px-2 text-[#222]">S.no</td>
+                                    <td class="py-2 px-2 text-[#222]">name</td>
+                                    <td class="py-2 px-2 text-[#222]">gender</td>
+                                    <td class="py-2 px-2 text-[#222]">disease</td>
+                                    <td class="py-2 px-2 text-[#222]">appointed for</td>
+                                    <td class="py-2 px-2 text-[#222]">action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">1</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">2</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">3</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">4</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">5</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">6</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">7</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+                                <tr class="capitalize font-normal">
+                                    <td class="py-2 px-2 text-[#222]">8</td>
+                                    <td class="py-2 px-2 text-[#222]">prashant pandey</td>
+                                    <td class="py-2 px-2 text-[#222]">male</td>
+                                    <td class="py-2 px-2 text-[#222]">chromic pain</td>
+                                    <td class="py-2 px-2 text-[#222]">Dr. kishor</td>
+                                    <td class="py-2 px-2 text-[#222]">icon</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="right w-[40%] bg-white p-6 rounded-2xl overflow-y-scroll hide-scrollbar overflow-x-hidden">
+                    <div
+                        class="flex flex-row justify-between items-center uppercase border-b-[1px] border-[#f0f0f0] p-4">
+                        <h3 class="text-2xl font-bold">Available doctors</h3>
+                        <button class="bg-[#4F7EFC] rounded-lg py-2 px-4 font-medium text-white"><a href={% url "allDoc" %}>See all</a><span
+                                class="las la-arrow-right ml-1"></span></button>
+                    </div>
+                    <div>
+                        <div class="flex h-full flex-col pt-2 pb-2 pl-4 pr-4">
+
+                            {% for n in data %}
+                            <div class="flex flex-row justify-between mb-4">
+                                <div class="flex flex-row items-center">
+                                    <img src={{n.image.imageURL}} alt="" class="w-14 cover h-14 bg-[#E7F1FF] p-1 rounded-full">
+                                    <div class="ml-4 capitalize">
+                                        <h4 class="text-[#222] font-semibold text-[17px] ">{{n.first_name}} {{n.last_name}}</h4>
+                                        <small class="text-[#8390A2] font-medium ">{{n.speciality}}</small>
+                                    </div>
+                                </div>
+
+                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
+                                    <i class="las la-ellipsis-v"></i>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
