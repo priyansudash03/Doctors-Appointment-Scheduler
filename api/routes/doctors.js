@@ -56,7 +56,7 @@ router.get('/count',async (req,res)=>{
     }     
 });
 
-router.post('/',upload.single('image'), async (req,res)=>{
+router.post('/register',upload.single('image'), async (req,res)=>{
     try{
         let imageNames;
         if(req.file){
@@ -107,7 +107,7 @@ router.post('/',upload.single('image'), async (req,res)=>{
     }
 });
 
-router.post('/login',async (req,res)=>{
+router.get('/login',async (req,res)=>{
     const doctor = await Doctor.findOne({phone: req.query.phone});
     if(!doctor){
         return res.status(404).json({success:false, message: "No patient found"})

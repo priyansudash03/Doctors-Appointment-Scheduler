@@ -73,7 +73,7 @@ router.get('/count',async (req,res)=>{
     }     
 });
 
-router.post('/',upload.single('image'),async (req,res)=>{
+router.post('/register',upload.single('image'),async (req,res)=>{
     try{
         let imageNames;
         if(req.file){
@@ -119,7 +119,7 @@ router.post('/',upload.single('image'),async (req,res)=>{
     }
 });
 
-router.post('/login',async (req,res)=>{
+router.get('/login',async (req,res)=>{
     const patient = await Patient.findOne({phone: req.query.phone});
     if(!patient){
         return res.status(404).json({success:false, message: "No patient found"})
