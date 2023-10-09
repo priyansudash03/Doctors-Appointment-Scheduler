@@ -78,10 +78,10 @@ def forDoctor2(request,id):
 
 def forDesk(request):
     
-    if request.session['user_type'] == 'Not':
-        redirect('patientLogin')
-    else:
-        print(request.session['user_type'])
+    if request.session['user_type'] != 'patient':
+        return  redirect('patientLogin')
+    
+    print(request.session['user_type'])
     
     api_url = "http://127.0.0.1:3000/doctors"
     response = requests.get(api_url)
