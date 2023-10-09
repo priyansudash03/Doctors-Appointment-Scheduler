@@ -1,10 +1,25 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 
 import requests
 
 # Create your views here.
 
+
+
+def docCount():
+    api_url_docCount = "http://127.0.0.1:3000/doctors/count"
+    response = requests.get(api_url_docCount)
+    data = response.json()
+
+    return data['count']
+
+def patientCount():
+    api_url_patientCount = "http://127.0.0.1:3000/patients/count"
+    response = requests.get(api_url_patientCount)
+    data2 = response.json()
+
+    return data2['count']
 
 def forDoctor(request):
     api_url = "http://127.0.0.1:3000/appointments"
@@ -83,12 +98,40 @@ def forDesk(request):
     return render(request,'deskLandingPage.html',context)
 
 def forPatient(request):
+    api_url = "http://127.0.0.1:3000/doctors"
+    response = requests.get(api_url)
+    data = response.json()
 
+    context={
+        "noDoc":docCount(),
+        "noPatient":patientCount(),
+        "data":data,
+    }
 
-    return render(request,"patientLandingPage.html")
+    return render(request,"patientLandingPage.html",context)
 
 def patientLogin(request):
-    return render(request,'patientLogin.html')
+
+    if(request.method=='POST'):
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        api_url = "http://127.0.0.1:3000/patients/login?phone="+username+"&pass="+password
+        print(api_url)
+        response = requests.get(api_url)
+        data = response.json()
+        print(data)
+
+        request.session['user_type'] = 'patient'
+        request.session['user_id']=username
+        print(request.session.get('user_type'))
+
+        print(f"Username = {username} \nPassword = {password}")
+        return redirect('forPatient')
+
+    else:
+        print("Get method")
+        return render(request,'patientLogin.html')
 
 def managerLogin(request):
     return render(request,'managerLogin.html')

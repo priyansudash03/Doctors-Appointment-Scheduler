@@ -97,7 +97,7 @@
                 <div class="box py-6 px-10 bg-[#EAEDFA] rounded-2xl flex flex-row items-center justify-between h-40">
                     <div class="text-[#7a90c3]">
                         <h4 class="capitalize font-semibold text-xl">total doctors</h4>
-                        <h1 class="capitalize text-4xl text-black font-bold">256</h1>
+                        <h1 class="capitalize text-4xl text-black font-bold">{{noDoc}}</h1>
                     </div>
                     <div class="icon">
                         <i class="las la-stethoscope text-8xl bg-[#7895de] rounded-2xl text-[#EAEDFA]"></i>
@@ -106,7 +106,7 @@
                 <div class="box py-6 px-10 bg-[#FEF4EA] rounded-2xl flex flex-row items-center justify-between h-40">
                     <div class="text-[#f3d464]">
                         <h4 class="capitalize font-semibold text-xl">total patients</h4>
-                        <h1 class="capitalize text-4xl text-black font-bold">456</h1>
+                        <h1 class="capitalize text-4xl text-black font-bold">{{noPatient}}</h1>
                     </div>
                     <div class="icon">
                         <i class="las la-user-injured text-8xl bg-[#f3d464] rounded-2xl text-[#FEF4EA]"></i>
@@ -251,12 +251,14 @@
                     </div>
                     <div>
                         <div class="flex h-full flex-col pt-2 pb-2 pl-4 pr-4">
+                            
+                            {% for n in data %}
                             <div class="flex flex-row justify-between mb-4">
                                 <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
+                                    <img src={{n.image.imageURL}} alt="" class="w-14 cover h-14 bg-[#E7F1FF] p-1 rounded-full">
                                     <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
+                                        <h4 class="text-[#222] font-semibold text-[17px] ">{{n.first_name}} {{n.last_name}}</h4>
+                                        <small class="text-[#8390A2] font-medium ">{{n.speciality}}</small>
                                     </div>
                                 </div>
 
@@ -264,72 +266,7 @@
                                     <i class="las la-ellipsis-v"></i>
                                 </div>
                             </div>
-                            <div class="flex flex-row justify-between mb-4">
-                                <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
-                                    <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
-                                    </div>
-                                </div>
-
-                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
-                                    <i class="las la-ellipsis-v"></i>
-                                </div>
-                            </div>
-                            <div class="flex flex-row justify-between mb-4">
-                                <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
-                                    <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
-                                    </div>
-                                </div>
-
-                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
-                                    <i class="las la-ellipsis-v"></i>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-row justify-between mb-4">
-                                <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
-                                    <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
-                                    </div>
-                                </div>
-
-                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
-                                    <i class="las la-ellipsis-v"></i>
-                                </div>
-                            </div>
-                            <div class="flex flex-row justify-between mb-4">
-                                <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
-                                    <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
-                                    </div>
-                                </div>
-
-                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
-                                    <i class="las la-ellipsis-v"></i>
-                                </div>
-                            </div>
-                            <div class="flex flex-row justify-between mb-4">
-                                <div class="flex flex-row items-center">
-                                    <img src="images/boy.png" alt="" class="w-14 h-14 bg-[#E7F1FF] p-1 rounded-full">
-                                    <div class="ml-4 capitalize">
-                                        <h4 class="text-[#222] font-semibold text-[17px] ">Aditya Kumar</h4>
-                                        <small class="text-[#8390A2] font-medium ">Cardiologist</small>
-                                    </div>
-                                </div>
-
-                                <div class="contact  flex justify-center items-center mr-2 text-2xl">
-                                    <i class="las la-ellipsis-v"></i>
-                                </div>
-                            </div>
+                            {% endfor %}
 
                         </div>
                     </div>
