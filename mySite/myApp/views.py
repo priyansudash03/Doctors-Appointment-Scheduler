@@ -5,6 +5,13 @@ import requests
 
 # Create your views here.
 
+def check(request):
+    if request.session['user_type'] == None:
+        print("None")
+        redirect(request.META['HTTP_REFERER'])
+    else:
+        pass
+
 
 
 def docCount():
@@ -70,6 +77,12 @@ def forDoctor2(request,id):
 
 
 def forDesk(request):
+    
+    if request.session['user_type'] == 'Not':
+        redirect('patientLogin')
+    else:
+        print(request.session['user_type'])
+    
     api_url = "http://127.0.0.1:3000/doctors"
     response = requests.get(api_url)
     data = response.json()
@@ -102,10 +115,19 @@ def forPatient(request):
     response = requests.get(api_url)
     data = response.json()
 
+    userId = request.session['user_id']
+    api_url2 = "http://127.0.0.1:3000/patients?number="+userId
+    response = requests.get(api_url2)
+    data2 = response.json()
+    name = data2[0]["first_name"]+" "+data2[0]["last_name"]
+    
+
     context={
         "noDoc":docCount(),
         "noPatient":patientCount(),
         "data":data,
+        "name":name,
+        "userid":userId,
     }
 
     return render(request,"patientLandingPage.html",context)
@@ -120,13 +142,16 @@ def patientLogin(request):
         print(api_url)
         response = requests.get(api_url)
         data = response.json()
-        print(data)
+
+        if(data['success']==False):
+            return redirect(request.META['HTTP_REFERER'])
+
+        print(data['success'])
 
         request.session['user_type'] = 'patient'
         request.session['user_id']=username
-        print(request.session.get('user_type'))
+        
 
-        print(f"Username = {username} \nPassword = {password}")
         return redirect('forPatient')
 
     else:
@@ -175,7 +200,7 @@ def appointDone(request,id):
 
 def home(request):
 
-
+    request.session['user_type'] = 'Not'
 
     return HttpResponse("<h1>Hello World</h1>")
 
