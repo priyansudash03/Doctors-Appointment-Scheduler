@@ -12,8 +12,6 @@ def check(request):
     else:
         pass
 
-
-
 def docCount():
     api_url_docCount = "http://127.0.0.1:3000/doctors/count"
     response = requests.get(api_url_docCount)
@@ -204,5 +202,12 @@ def home(request):
 
     return HttpResponse("<h1>Hello World</h1>")
 
+def addPatient(request):
 
 
+    return render(request,'addPatient.html')
+
+def addAllotment(request):
+
+
+    return render(request,'addAllotment.html')
