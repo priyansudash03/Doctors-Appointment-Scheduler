@@ -119,4 +119,16 @@ router.post('/',upload.single('image'),async (req,res)=>{
     }
 });
 
+router.post('/login',async (req,res)=>{
+    const patient = await Patient.findOne({phone: req.query.phone});
+    if(!patient){
+        return res.status(404).json({success:false, message: "No patient found"})
+    }
+    if(bcrypt.compareSync(req.query.pass, patient.password)){
+        res.status(200).json({success: true, message: 'Logged In'});
+    }else{
+        res.status(401).json({success: false, messaage: 'Invalid password'});
+    }
+})
+
 module.exports = router;
