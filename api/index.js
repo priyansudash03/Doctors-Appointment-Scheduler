@@ -23,10 +23,12 @@ app.use(morgan('tiny'));
 const doctorsRouter = require('./routes/doctors');
 const patientRouter = require('./routes/patients');
 const appointmentRouter = require('./routes/appointments')
+const managerRouter = require('./routes/managers')
 
 app.use("/doctors", doctorsRouter);
 app.use("/patients", patientRouter);
 app.use('/appointments', appointmentRouter);
+app.use("/managers", managerRouter);
 
 app.listen(3000,()=>{
     console.log("Server started at port 3000");
