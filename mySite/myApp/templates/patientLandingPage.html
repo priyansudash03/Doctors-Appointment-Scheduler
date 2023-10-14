@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,8 +57,8 @@
                     src="https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
                     alt="">
                 <div class="userid">
-                    <h1 class="text-xl font-semibold capitalize">Priyansu Dash</h1>
-                    <h3 class="text-sm font-medium text-[#B0B2C4]">priyansudash03</h3>
+                    <h1 class="text-xl font-semibold capitalize">{{name}}</h1>
+                    <h3 class="text-sm font-medium text-[#B0B2C4]">{{userid}}</h3>
                 </div>
             </div>
         </div>
@@ -125,7 +126,7 @@
             <div class="part2 pt-6 w-full flex flex-row max-h-screen gap-3">
                 <div class="left w-[70%]">
                     <div class="upper px-6 pt-6 mt-16 pb-0 flex items-end rounded-2xl bg-yellow-400 w-full h-72">
-                        <img class="h-[150%] " src="images/pngwing.com.png" alt="">
+                        <img class="h-[150%] " src={% static "images/doc.png" %} alt="">
                         <div class="text h-full flex flex-col items-start ">
                             <h1 class="font-bold text-white text-3xl mb-4">
                                 What is the difference between the first vaccine and second vaccine?
@@ -144,7 +145,7 @@
                         <div class="border-4 flex flex-col justify-between items-center p-8 rounded-2xl border-white">
                             <h3 class="capitalize text-white text-2xl text-center my-3 font-bold">Your Health, Our
                                 Priority: We Care, You Heal,</h3>
-                            <img src="images/100png.png" class="rounded-full h-44 w-44" alt="">
+                            <img src={% static "images/100png.png" %} class="rounded-full h-44 w-44" alt="">
                         </div>
 
                     </div>
