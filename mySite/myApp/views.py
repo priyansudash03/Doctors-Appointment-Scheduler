@@ -1,16 +1,27 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
-
+from django.contrib import messages
 import requests
 
 # Create your views here.
 
-def check(request):
-    if request.session['user_type'] == None:
-        print("None")
-        redirect(request.META['HTTP_REFERER'])
+def checkPatient(request):
+    if request.session['user_type'] == 'patient':
+        return True
     else:
-        pass
+        return False
+
+def checkDoctor(request):
+    if request.session['user_type'] != 'doctor':
+        return False
+    else:
+        return True
+
+def checkManager(request):
+    if request.session['user_type'] != 'manager':
+        return False
+    else:
+        return True
 
 def docCount():
     api_url_docCount = "http://127.0.0.1:3000/doctors/count"
@@ -46,7 +57,6 @@ def forDoctor(request):
     }
     return render(request,"doctorsLandingPage.html",context)
 
-
 def forDoctor2(request,id):
     api_url = "http://127.0.0.1:3000/appointments"
     response = requests.get(api_url)
@@ -72,7 +82,6 @@ def forDoctor2(request,id):
         'patient':patient[0],
     }
     return render(request,"doctorsLandingPage2.html",context)
-
 
 def forDesk(request):
     
@@ -109,6 +118,10 @@ def forDesk(request):
     return render(request,'deskLandingPage.html',context)
 
 def forPatient(request):
+
+    print(request.session['user_type']=='patient')
+    if ( request.session['user_type'] != 'patient'):
+        return redirect('patientLogin')
     api_url = "http://127.0.0.1:3000/doctors"
     response = requests.get(api_url)
     data = response.json()
@@ -127,7 +140,7 @@ def forPatient(request):
         "name":name,
         "userid":userId,
     }
-
+    print("\n\n",request.session['user_type'],"\n\n")
     return render(request,"patientLandingPage.html",context)
 
 def patientLogin(request):
@@ -142,6 +155,8 @@ def patientLogin(request):
         data = response.json()
 
         if(data['success']==False):
+
+            messages.error(request,"Wrong Username or Password")    
             return redirect(request.META['HTTP_REFERER'])
 
         print(data['success'])
@@ -160,7 +175,31 @@ def managerLogin(request):
     return render(request,'managerLogin.html')
 
 def doctorLogin(request):
-    return render(request,'doctorLogin.html')
+    if(request.method=='POST'):
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        api_url = "http://127.0.0.1:3000/doctors/login?phone="+username+"&pass="+password
+        print(api_url)
+        response = requests.get(api_url)
+        data = response.json()
+
+        if(data['success']==False):
+            return redirect(request.META['HTTP_REFERER'])
+
+        print(data['success'])
+
+        request.session['user_type'] = 'doctor'
+        request.session['user_id']=username
+        
+
+        # return render(request,'doctorsLandingPage.html')
+        # return forDoctor(request)
+        return redirect('forDoctor')
+
+    else:
+        print("Get method")
+        return render(request,'doctorLogin.html')
 
 def allDoc(request):
     api_url = "http://127.0.0.1:3000/doctors"
