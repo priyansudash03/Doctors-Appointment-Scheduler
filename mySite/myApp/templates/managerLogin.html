@@ -25,7 +25,8 @@
     </div>
     <div class="main bg-[#1E74FF]">
         
-        <div class="manager min-h-screen flex  justify-center items-center w-full ">
+        <form method='POST' class="manager min-h-screen flex  justify-center items-center w-full ">
+        {% csrf_token %}
             <div class="card bg-white flex flex-col gap-3 p-6 rounded-2xl w-[28vw] h-[30vw]">
                 <h1 class="text-black font-bold text-3xl uppercase">Login as manager</h1>
                 <label for="username" class="text-black font-semibold text-xl">Enter your username:</label>
@@ -39,7 +40,7 @@
                     </div>
                     <h4 class="font-semibold text-[#1E74FF] capitalize">forgot password?</h4>
                 </div>
-                <button class="font-semibold bg-[#1e74ff] text-white text-2xl px-3 py-1 w-full rounded-2xl" >Sign in</button>
+                <button type="submit" class="font-semibold bg-[#1e74ff] text-white text-2xl px-3 py-1 w-full rounded-2xl" >Sign in</button>
                 <div class="font-semibold capitalize self-center flex flex-row gap-1">
                     <h4>Don't have an account?</h4>
                     <h4 class="text-[#1E74FF]">Register!</h4>

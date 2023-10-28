@@ -1,9 +1,15 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,HttpResponseRedirect
 from django.http import JsonResponse
 from django.contrib import messages
 import requests
 
 # Create your views here.
+
+def expn(request):
+    context ={
+        "Hello":"World"
+    }
+    return JsonResponse(context)
 
 def checkPatient(request):
     if request.session['user_type'] == 'patient':
@@ -85,8 +91,8 @@ def forDoctor2(request,id):
 
 def forDesk(request):
     
-    if request.session['user_type'] != 'patient':
-        return  redirect('patientLogin')
+    if request.session['user_type'] != 'manager':
+        return  redirect('managerLogin')
     
     print(request.session['user_type'])
     
@@ -121,6 +127,7 @@ def forPatient(request):
 
     print(request.session['user_type']=='patient')
     if ( request.session['user_type'] != 'patient'):
+        
         return redirect('patientLogin')
     api_url = "http://127.0.0.1:3000/doctors"
     response = requests.get(api_url)
@@ -150,7 +157,7 @@ def patientLogin(request):
         password = request.POST.get("password")
 
         api_url = "http://127.0.0.1:3000/patients/login?phone="+username+"&pass="+password
-        print(api_url)
+        # print(api_url)
         response = requests.get(api_url)
         data = response.json()
 
@@ -172,7 +179,33 @@ def patientLogin(request):
         return render(request,'patientLogin.html')
 
 def managerLogin(request):
-    return render(request,'managerLogin.html')
+
+    if(request.method=='POST'):
+        print("method = POST")
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        api_url = "http://127.0.0.1:3000/managers/login?phone="+username+"&password="+password
+        # print(api_url)
+        response = requests.get(api_url)
+        data = response.json()
+
+        if(data['success']==False):
+            print("  Error!!  "*5)
+            messages.error(request,"Wrong Username or Password")    
+            return redirect(request.META['HTTP_REFERER'])
+
+        print("Success = ",data['success'])
+
+        request.session['user_type'] = 'manager'
+        request.session['user_id']=username
+        
+
+        return redirect('forDesk')
+
+    else:
+        print("Get method")
+        return render(request,'managerLogin.html')
 
 def doctorLogin(request):
     if(request.method=='POST'):
@@ -248,5 +281,15 @@ def addPatient(request):
 
 def addAllotment(request):
 
+    if request.method =='POST':
 
-    return render(request,'addAllotment.html')
+
+        return render(request,'addAllotment.html')
+    else:
+        print("------Get------")
+        return render(request,'addAllotment.html')
+
+
+def goBack(request):
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

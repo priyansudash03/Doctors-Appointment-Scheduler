@@ -1,31 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<div
+<form method="POST"
     class="card capitalize text-xl font-semibold flex flex-col justify-between bg-white min-h-[80vh] w-[40%] p-6 rounded-3xl">
+    {% csrf_token %}
     <h1 class="text-4xl font-bold uppercase">book appointment</h1>
+
+
     <div class="user flex flex-row justify-between ">
 
         <label class="mt-2 " for="">user-id:</label>
         <input class="px-3 py-2 border-b-[#e4e4e4]  w-[70%] border-b-2 focus:outline-none" type="text"
-            placeholder="User-id">
+            placeholder="User-id" id="userId" >
     </div>
     <div class="contact flex flex-row justify-between ">
 
         <label class="mt-2 " for="">contact no:</label>
         <input class="px-3 w-[70%] py-2 border-b-[#e4e4e4] border-b-2 focus:outline-none" type="number"
-            placeholder="Contact No.">
+            placeholder="Contact No." id="phoneId">
 
     </div>
     <div class="date  mt-2 flex flex-row w-[70%] justify-between items-center">
 
         <label for="">Date of appointment: </label>
         <input class="px-3 py-2 text-[#e4e4e4] border-b-[#e4e4e4]  w-1/2 border-b-2 focus:outline-none" type="date"
-            name="" id="">
+            name="" id="date">
     </div>
     <div class="category flex flex-row w-[70%] justify-between items-center">
         <label class="mt-2" for="category">category :-</label>
         <select class="px-3 py-2 border-b-[#e4e4e4] text-[#e4e4e4]  w-1/2 border-b-2 focus:outline-none" name="category"
-            id="category">
+            id="categoryOption">
             <option class="text-xl font-medium capitalize" value="">Cardiologist</option>
             <option class="text-xl font-medium capitalize" value="">orthopedition</option>
             <option class="text-xl font-medium capitalize" value="">ENT</option>
@@ -36,7 +39,7 @@
     <div class="doctor flex flex-row w-[70%] justify-between items-center">
         <label class="mt-2" for="doctor">select doctor :-</label>
         <select class="px-3 py-2 border-b-[#e4e4e4] text-[#e4e4e4]  w-1/2 border-b-2 focus:outline-none" name="doctors"
-            id="doctors">
+            id="doctorOption">
             <option class="text-xl font-medium capitalize" value="">Book Any</option>
             <option class="text-xl font-medium capitalize" value="">Dr. Anikesh</option>
             <option class="text-xl font-medium capitalize" value="">Dr. priyansu</option>
@@ -46,11 +49,13 @@
         </select>
     </div>
     <div class="buttons flex flex-row gap-3 self-end">
+        <a href={% url "addPatient" %}>
         <button
             class="mt-6 capitalize self-end relative text-white text-lg font-semibold py-2 px-3 rounded-lg w-44 bg-[#FDA621]">Register</button>
+        </a>
         <button
             class="mt-6 capitalize self-end relative text-white text-lg font-semibold py-2 px-3 rounded-lg w-44 bg-[#1F9EFD]">Book
             Slot</button>
     </div>
-</div>
+</form>
 {% endblock %}

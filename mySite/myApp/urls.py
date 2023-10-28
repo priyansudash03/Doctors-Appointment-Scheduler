@@ -15,5 +15,7 @@ urlpatterns = [
     path('forPatient/',forPatient,name="forPatient"),
     path('addPatient/',addPatient,name='addPatient'),
     path('addAllotment/',addAllotment,name="addAllotment"),
+    
+    path('expn/',expn,name='expn'),
 
 ]
