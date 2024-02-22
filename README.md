@@ -1,7 +1,7 @@
 
 # Doctor's Appointment-Scheduler 
 
-This is a web Application based project Built using Djanggo and Tailwind ,project is designed to schedule patients appointment in a Hospital. As there are many doctor's in a hospital of different categories assigning patients manually is tough task. So this application automate the scheduling process.(USES LOAD BALANCING CONCEPT)
+This is a web Application based project Built using Django and Tailwind ,project is designed to schedule patients appointment in a Hospital. As there are many doctor's in a hospital of different categories assigning patients manually is tough task. So this application automate the scheduling process.(USES LOAD BALANCING CONCEPT)
 
 This application is divided into 3 parts:
 1)User's Dashboard.
